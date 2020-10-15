@@ -35,16 +35,22 @@ const happyMood = "Quite happy!";
 const sadMood = "Rather sad";
 
 export default function Moods() {
-  const [mood, setMood] = useState([makeHappy, makeSad, reset]);
+  let [mood, setMood] = useState();
 
   const makeHappy = () => {
-    /* STEP 4 */
+    setMood((mood = happyMood));
+    console.log(mood);
+    return mood;
   };
   const makeSad = () => {
-    /* STEP 5 */
+    setMood((mood = sadMood));
+    console.log(mood);
+    return mood;
   };
   const reset = () => {
-    /* STEP 6 */
+    setMood((mood = initialMood));
+    console.log(mood);
+    return mood;
   };
 
   const style = {
@@ -57,9 +63,8 @@ export default function Moods() {
     <div className="widget-moods container">
       <h2>Moods</h2>
       <div id="mood" style={style}>
-        Not sure how I feel
-      </div>{" "}
-      {mood}
+        {mood}
+      </div>
       <div>
         <button id="makeHappy" onClick={makeHappy}>
           Make Happy
